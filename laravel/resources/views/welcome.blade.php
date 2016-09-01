@@ -73,19 +73,15 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Share It
-                </div>
-                <p> The website to share all your functions </p>
-                
-                <h3> Laravel Doc </h3>
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <?php
+                    $funccode = \app\CodeComment::all();
+
+                    foreach($funccode as $f){
+                        foreach($f->code() as $cc){
+                            echo $cc->code ,'<br>';
+                        }
+                    }
+                ?>
             </div>
         </div>
     </body>
