@@ -40,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">SOLID.</a>
+          <a class="navbar-brand" href="index.html">SHARE IT</a>
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
@@ -66,15 +66,44 @@
 	 ***************************************************************************************************************** -->
 	<div id="headerwrap">
 	    <div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<h3>Show your work with this beautiful theme</h3>
-					<h1>Eyecatching Bootstrap 3 Theme.</h1>
-					<h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-					<h5>More Lorem Ipsum added here too.</h5>
-				</div>
-				<div class="col-lg-8 col-lg-offset-2 himg">
-					<img src="<?php echo URL::to('/img/browser.png')?>" class="img-responsive">
+			     <div class="row">
+				         <div class="col-lg-8 col-lg-offset-2">
+                    <h3>Partagez vos idées</h3>
+                    <h1>Share It</h1>
+          					<h5>Grâce à Share It, vous pouvez partager vos méthodes, vos fonctions dans tous les langages de programmation</h5>
+          					<h5>Aidez la communauté, la communauté vous aidera :)</h5>
+				        </div>
+	      <div class="col-lg-8 col-lg-offset-2 himg">
+					<!-- <img src="<?php //echo URL::to('/img/code.jpg')?>" class="img-responsive">-->
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="<?php echo URL::to('img/logo/php.png')?>" class="img-responsive">
+            </div>
+
+            <div class="item">
+              <img src="<?php echo URL::to('img/logo/js.png')?>" class="img-responsive">
+            </div>
+
+            <div class="item">
+              <img src="<?php echo URL::to('img/logo/java.png')?>" class="img-responsive">
+            </div>
+
+            <div class="item">
+              <img src="<?php echo URL::to('img/logo/python.png')?>" class="img-responsive">
+            </div>
+          </div>
+        </div>
+
 				</div>
 			</div><!-- /row -->
 	    </div> <!-- /container -->
@@ -173,10 +202,6 @@
                                 <h3 class="a1" data-animate="fadeInDown">A Book Design Item</h3>
                                 <a data-rel="prettyPhoto" href="<?php echo URL::to('img/portfolio/portfolio_07.jpg')?>" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
                                 <a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
-                          </div><!-- he bg -->
-            </div><!-- he view -->
-          </div><!-- he wrap -->
-        </div><!-- end col-12 -->
 
                 <div class="portfolio-item graphic-design">
                     <div class="he-wrap tpl6">
@@ -257,7 +282,7 @@
 	 MIDDLE CONTENT
 	 ***************************************************************************************************************** -->
 
-	 <div class="container mtb">
+<!--	 <div class="container mtb">
 	 	<div class="row">
 	 		<div class="col-lg-4 col-lg-offset-1">
 		 		<h4>More About Our Agency.</h4>
@@ -286,12 +311,12 @@
 	 		</div>
 
 	 	</div><! --/row -->
-	 </div><! --/container -->
+	<!-- </div><! --/container -->
 
 	<!-- *****************************************************************************************************************
 	 TESTIMONIALS
 	 ***************************************************************************************************************** -->
-	 <div id="twrap">
+	<!-- <div id="twrap">
 	 	<div class="container centered">
 	 		<div class="row">
 	 			<div class="col-lg-8 col-lg-offset-2">
@@ -301,13 +326,13 @@
 	 			<p>WEB DESIGNER - BLACKTIE.CO</p>
 	 			</div>
 	 		</div><! --/row -->
-	 	</div><! --/container -->
-	 </div><! --/twrap -->
+	 <!--	</div><! --/container -->
+	<!-- </div><! --/twrap -->
 
 	<!-- *****************************************************************************************************************
 	 OUR CLIENTS
 	 ***************************************************************************************************************** -->
-	 <div id="cwrap">
+	 <!--<div id="cwrap">
 		 <div class="container">
 		 	<div class="row centered">
 			 	<h3>OUR CLIENTS</h3>
@@ -324,8 +349,8 @@
 			 		<img src="<?php echo URL::to('img/clients/client04.png')?>" class="img-responsive">
 			 	</div>
 		 	</div><! --/row -->
-		 </div><! --/container -->
-	 </div><! --/cwrap -->
+		<!-- </div><! --/container -->
+	<!-- </div><! --/cwrap -->
 
 	<!-- *****************************************************************************************************************
 	 FOOTER
@@ -458,5 +483,13 @@
 	});
 })(jQuery);
 </script>
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+    jQuery("#myCarousel").carousel ({
+      interval : 4000
+    });
+  });
+</script>
+
   </body>
 </html>
