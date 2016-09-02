@@ -202,6 +202,10 @@
                                 <h3 class="a1" data-animate="fadeInDown">A Book Design Item</h3>
                                 <a data-rel="prettyPhoto" href="<?php echo URL::to('img/portfolio/portfolio_07.jpg')?>" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
                                 <a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
+                              </div><!-- he bg -->
+                            </div><!-- he view -->
+                          </div><!-- he wrap -->
+                        </div><!-- end col-12 -->
 
                 <div class="portfolio-item graphic-design">
                     <div class="he-wrap tpl6">
@@ -337,16 +341,16 @@
 		 	<div class="row centered">
 			 	<h3>OUR CLIENTS</h3>
 			 	<div class="col-lg-3 col-md-3 col-sm-3">
-			 		<img src="<?php echo URL::to('img/clients/client01.png')?>" class="img-responsive">
+			 		<img src="<?php //echo URL::to('img/clients/client01.png')?>" class="img-responsive">
 			 	</div>
 			 	<div class="col-lg-3 col-md-3 col-sm-3">
-			 		<img src="<?php echo URL::to('img/clients/client02.png')?>" class="img-responsive">
+			 		<img src="<?php //echo URL::to('img/clients/client02.png')?>" class="img-responsive">
 			 	</div>
 			 	<div class="col-lg-3 col-md-3 col-sm-3">
-			 		<img src="<?php echo URL::to('/img/clients/client03.png')?>" class="img-responsive">
+			 		<img src="<?php //echo URL::to('/img/clients/client03.png')?>" class="img-responsive">
 			 	</div>
 			 	<div class="col-lg-3 col-md-3 col-sm-3">
-			 		<img src="<?php echo URL::to('img/clients/client04.png')?>" class="img-responsive">
+			 		<img src="<?php //echo URL::to('img/clients/client04.png')?>" class="img-responsive">
 			 	</div>
 		 	</div><! --/row -->
 		<!-- </div><! --/container -->
