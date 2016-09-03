@@ -38,50 +38,51 @@
 	<!-- *****************************************************************************************************************
 	 HEADERWRAP
 	 ***************************************************************************************************************** -->
-	<div id="headerwrap">
-	    <div class="container">
-			     <div class="row">
-				         <div class="col-lg-8 col-lg-offset-2">
-                    <h3><?php echo trans('hometrans.slogan') ?></h3>
-                    <h1>Share It</h1>
-          					<h5><?php echo trans('hometrans.description1') ?></h5>
-          					<h5><?php echo trans('hometrans.description2') ?></h5>
-				        </div>
-	      <div class="col-lg-8 col-lg-offset-2 himg">
-					<!-- <img src="<?php //echo URL::to('/img/code.jpg')?>" class="img-responsive">-->
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-          </ol>
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	  <ol class="carousel-indicators">
+		  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	  </ol>
 
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img src="<?php echo URL::to('img/logo/php.png')?>" class="img-responsive">
-            </div>
+	  <div class="carousel-inner" role="listbox">
+		  <div class="item active">
+			  <img src="img/carousel/wall1.png" alt="First slide">
+			  <div class="container">
+				  <div class="carousel-caption">
+					  <h3><?php echo trans('hometrans.slogan') ?></h3>
+					  <h1>Share It</h1>
+					  <br>
+					  <h5><?php echo trans('hometrans.description1') ?></h5>
+					  <h5><?php echo trans('hometrans.description2') ?></h5>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="item">
+			  <img src="img/carousel/wall2.png" alt="Second slide">
+			  <div class="container">
+				  <div class="carousel-caption">
+					  <h3><?php echo trans('hometrans.slogan') ?></h3>
+					  <h1>Share It</h1>
+					  <br>
+					  <h5><?php echo trans('hometrans.description1') ?></h5>
+					  <h5><?php echo trans('hometrans.description2') ?></h5>
+				  </div>
+			  </div>
+		  </div>
+	  </div>
 
-            <div class="item">
-              <img src="<?php echo URL::to('img/logo/js.png')?>" class="img-responsive">
-            </div>
+	  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		  <span class="icon-prev" aria-hidden="true"></span>
+		  <span class="sr-only">Previous</span>
+	  </a>
 
-            <div class="item">
-              <img src="<?php echo URL::to('img/logo/java.png')?>" class="img-responsive">
-            </div>
+	  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		  <span class="icon-next" aria-hidden="true"></span>
+		  <span class="sr-only">Next</span>
+	  </a>
+  </div>
 
-            <div class="item">
-              <img src="<?php echo URL::to('img/logo/python.png')?>" class="img-responsive">
-            </div>
-          </div>
-        </div>
-
-				</div>
-			</div><!-- /row -->
-	    </div> <!-- /container -->
-	</div><!-- /headerwrap -->
   <!-- *****************************************************************************************************************
    PORTFOLIO SECTION
    ***************************************************************************************************************** -->

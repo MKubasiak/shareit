@@ -5556,8 +5556,9 @@ button.close {
 }
 .carousel-caption {
   position: absolute;
+  vertical-align: middle;
   right: 15%;
-  bottom: 20px;
+  bottom: 30%;
   left: 15%;
   z-index: 10;
   padding-top: 20px;
