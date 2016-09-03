@@ -1,6 +1,7 @@
 <?php
 return [
-    'pageaccueil' => 'Page d\'accueil',
+    'pageaccueil' => 'PAGE D\'ACCUEIL',
+    'langages' => 'LANGAGES',
     'slogan' => 'Partagez vos idées',
     'description1' => 'Grâce à Share It, vous pouvez partager vos méthodes, vos fonctions dans tous les langages de programmation.',
     'description2' => ' Aidez la communauté, la communauté vous aidera :)',

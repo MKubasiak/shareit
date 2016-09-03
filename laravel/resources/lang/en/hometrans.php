@@ -1,6 +1,7 @@
 <?php
 return [
     'pageaccueil' => 'Home',
+    'langages' => 'LANGUAGES',
     'slogan' => '',
     'description1' => '',
     'description2' => '',
