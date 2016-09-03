@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="<?php echo URL::to('ico/favicon.ico')?>">
 
-    <title>SOLID - Bootstrap 3 Theme</title>
+    <title>Share It | Langage</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo URL::to('css/bootstrap.css')?>" rel="stylesheet">
@@ -27,191 +27,140 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- <script src="assets/js/modernizr.js"></script> -->
+    <script src="<?php echo URL::to('js/modernizr.js')?>"></script>
   </head>
 
   <body>
 
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">SOLID.</a>
-        </div>
-        <div class="navbar-collapse collapse navbar-right">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">HOME</a></li>
-            <li class="active"><a href="about.html">ABOUT</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="blog.html">BLOG</a></li>
-                <li><a href="single-post.html">SINGLE POST</a></li>
-                <li><a href="portfolio.html">PORTFOLIO</a></li>
-                <li><a href="single-project.html">SINGLE PROJECT</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+    <?php $languages = App\Language::all(); ?>
+    <?php $currentLang =  Request::input('lang');?>
+<!-- *****************************************************************************************************************
+NAVBAR
+***************************************************************************************************************** -->
 
+    <?php include 'navbar.php' ?>
 	<!-- *****************************************************************************************************************
 	 BLUE WRAP
 	 ***************************************************************************************************************** -->
 	<div id="blue">
 	    <div class="container">
 			<div class="row">
-				<h3>About.</h3>
+				<h3>Fonctions <?php echo $currentLang ?></h3>
 			</div><!-- /row -->
 	    </div> <!-- /container -->
 	</div><!-- /blue -->
-
-
 	<!-- *****************************************************************************************************************
-	 AGENCY ABOUT
+	 BLOG CONTENT
 	 ***************************************************************************************************************** -->
-
-	 <div class="container mtb">
+   <?php $query = "SELECT * FROM function
+                    LEFT OUTER JOIN function_code ON function.idfunction = function_code.idfunction
+                    JOIN language ON function.idlanguage = language.idlanguage
+                    LEFT OUTER JOIN customer ON function_code.idcustomer = customer.idcustomer
+                    WHERE language.nom = '$currentLang'";
+      $functions = DB::select($query);
+    ?>
+   <?php /*$functions = DB::table('function')
+                     ->leftJoin('function_code', 'function.idfunction','=','function_code.idfunction')
+                     ->join('language', 'function.idlanguage','=','language.idlanguage')
+                     ->leftjoin('customer', 'function_code.idcustomer','=', 'customer.idcustomer')
+                     ->where('language.nom',$currentLang)
+                     ->orderBy('date_code')
+                     ->select('function.*','function_code.*','language.*', 'language.*','customer.*')
+                     ->get();
+                     var_dump($functions);*/
+                     ?>
+   <div class="container mtb">
 	 	<div class="row">
-	 		<div class="col-lg-6">
-	 			<img class="img-responsive" src="<?php echo URL::to('img/agency.jpg')?>" alt="">
-	 		</div>
+      <div class="col-lg-8">
+	 		<! -- BLOG POSTS LIST -->
 
-	 		<div class="col-lg-6">
-		 		<h4>More About Our Agency.</h4>
-		 		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-		 		<p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-		 		<p>Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
- 				<p><br/><a href="contact.html" class="btn btn-theme">Contact Us</a></p>
+      <?php
+      if(empty($functions)){
+        echo 'Désolé, il n\'y a pas encore de fonctions correspondant a ce langage :(';
+      }else{
+        foreach($functions as $function){
+          echo
+          '<a href=""><h3 class="ctitle">'.$function->title.'</h3></a>'.
+          '<p><csmall>'.'Posted: April 25, 2014'.'</csmall> | <csmall2>By:'. 'Admin - 3 Comments'.'</csmall2></p>'.
+          '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>'.
+          '<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>'.
+          '<p><a href="single-post.html">[Read More]</a></p>'.
+          '<div class="hline"></div>'.
+
+          '<div class="spacing"></div>';
+        }
+      } ?>
+    </div>
+	 		<! -- SIDEBAR -->
+	 		<div class="col-lg-4">
+		 		<h4>Search</h4>
+		 		<div class="hline"></div>
+		 			<p>
+		 				<br/>
+		 				<input type="text" class="form-control" placeholder="Search something">
+		 			</p>
+
+		 		<div class="spacing"></div>
+
+		 		<h4>Categories</h4>
+		 		<div class="hline"></div>
+			 		<p><a href="#"><i class="fa fa-angle-right"></i> Wordpress</a> <span class="badge badge-theme pull-right">9</span></p>
+			 		<p><a href="#"><i class="fa fa-angle-right"></i> Photoshop</a> <span class="badge badge-theme pull-right">3</span></p>
+			 		<p><a href="#"><i class="fa fa-angle-right"></i> Web Design</a> <span class="badge badge-theme pull-right">11</span></p>
+			 		<p><a href="#"><i class="fa fa-angle-right"></i> Development</a> <span class="badge badge-theme pull-right">5</span></p>
+			 		<p><a href="#"><i class="fa fa-angle-right"></i> Tips & Tricks</a> <span class="badge badge-theme pull-right">7</span></p>
+			 		<p><a href="#"><i class="fa fa-angle-right"></i> Code Snippets</a> <span class="badge badge-theme pull-right">12</span></p>
+
+		 		<div class="spacing"></div>
+
+		 		<h4>Recent Posts</h4>
+		 		<div class="hline"></div>
+					<ul class="popular-posts">
+		                <li>
+		                    <a href="#"><img src="<?php echo URL::to('img/thumb01.jpg')?>" alt="Popular Post"></a>
+		                    <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+		                    <em>Posted on 02/21/14</em>
+		                </li>
+		                <li>
+		                    <a href="#"><img src="<?php echo URL::to('img/thumb02.jpg')?>" alt="Popular Post"></a>
+		                    <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+		                    <em>Posted on 03/01/14</em>
+		                <li>
+		                    <a href="#"><img src="<?php echo URL::to('img/thumb03.jpg')?>" alt="Popular Post"></a>
+		                    <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+		                    <em>Posted on 05/16/14</em>
+		                </li>
+		                <li>
+		                    <a href="#"><img src="<?php echo URL::to('img/thumb04.jpg')?>" alt="Popular Post"></a>
+		                    <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
+		                    <em>Posted on 05/16/14</em>
+		                </li>
+		            </ul>
+
+		 		<div class="spacing"></div>
+
+		 		<h4>Popular Tags</h4>
+		 		<div class="hline"></div>
+		 			<p>
+		            	<a class="btn btn-theme" href="#" role="button">Design</a>
+		            	<a class="btn btn-theme" href="#" role="button">Wordpress</a>
+		            	<a class="btn btn-theme" href="#" role="button">Flat</a>
+		            	<a class="btn btn-theme" href="#" role="button">Modern</a>
+		            	<a class="btn btn-theme" href="#" role="button">Wallpaper</a>
+		            	<a class="btn btn-theme" href="#" role="button">HTML5</a>
+		            	<a class="btn btn-theme" href="#" role="button">Pre-processor</a>
+		            	<a class="btn btn-theme" href="#" role="button">Developer</a>
+		            	<a class="btn btn-theme" href="#" role="button">Windows</a>
+		            	<a class="btn btn-theme" href="#" role="button">Phothosop</a>
+		            	<a class="btn btn-theme" href="#" role="button">UX</a>
+		            	<a class="btn btn-theme" href="#" role="button">Interface</a>
+		            	<a class="btn btn-theme" href="#" role="button">UI</a>
+		            	<a class="btn btn-theme" href="#" role="button">Blog</a>
+		 			</p>
 	 		</div>
 	 	</div><! --/row -->
 	 </div><! --/container -->
 
-	<!-- *****************************************************************************************************************
-	 TEEAM MEMBERS
-	 ***************************************************************************************************************** -->
-
-	 <div class="container mtb">
-	 	<div class="row centered">
-		 	<h3 class="mb">MEET OUR TEAM</h3>
-
-		 	<div class="col-lg-3 col-md-3 col-sm-3">
-				<div class="he-wrap tpl6">
-				<img src="<?php echo URL::to('img/team/team01.jpg')?>" alt="">
-					<div class="he-view">
-						<div class="bg a0" data-animate="fadeIn">
-                            <h3 class="a1" data-animate="fadeInDown">Contact Me:</h3>
-                            <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
-                            <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
-                    	</div><!-- he bg -->
-					</div><!-- he view -->
-				</div><!-- he wrap -->
-				<h4>Mark Webber</h4>
-				<h5 class="ctitle">CEO</h5>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-				<div class="hline"></div>
-		 	</div><! --/col-lg-3 -->
-
-		 	<div class="col-lg-3 col-md-3 col-sm-3">
-				<div class="he-wrap tpl6">
-				<img src="<?php echo URL::to('img/team/team02.jpg')?>" alt="">
-					<div class="he-view">
-						<div class="bg a0" data-animate="fadeIn">
-                            <h3 class="a1" data-animate="fadeInDown">Contact Me:</h3>
-                            <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
-                            <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
-                    	</div><!-- he bg -->
-					</div><!-- he view -->
-				</div><!-- he wrap -->
-				<h4>Paul Jameson</h4>
-				<h5 class="ctitle">LEAD DESIGNER</h5>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-				<div class="hline"></div>
-		 	</div><! --/col-lg-3 -->
-
-		 	<div class="col-lg-3 col-md-3 col-sm-3">
-				<div class="he-wrap tpl6">
-				<img src="<?php echo URL::to('img/team/team03.jpg')?>'" alt="">
-					<div class="he-view">
-						<div class="bg a0" data-animate="fadeIn">
-                            <h3 class="a1" data-animate="fadeInDown">Contact Me:</h3>
-                            <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
-                            <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
-                    	</div><!-- he bg -->
-					</div><!-- he view -->
-				</div><!-- he wrap -->
-				<h4>Laura Sommers</h4>
-				<h5 class="ctitle">LEAD DEVELOPER</h5>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-				<div class="hline"></div>
-		 	</div><! --/col-lg-3 -->
-
-		 	<div class="col-lg-3 col-md-3 col-sm-3">
-				<div class="he-wrap tpl6">
-				<img src="<?php echo URL::to('img/team/team04.jpg')?>" alt="">
-					<div class="he-view">
-						<div class="bg a0" data-animate="fadeIn">
-                            <h3 class="a1" data-animate="fadeInDown">Contact Me:</h3>
-                            <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
-                            <a href="#" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
-                    	</div><!-- he bg -->
-					</div><!-- he view -->
-				</div><!-- he wrap -->
-				<h4>Martin Blunt</h4>
-				<h5 class="ctitle">MARKETING</h5>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-				<div class="hline"></div>
-		 	</div><! --/col-lg-3 -->
-
-	 	</div><! --/row -->
-	 </div><! --/container -->
-
-	<!-- *****************************************************************************************************************
-	 TESTIMONIALS
-	 ***************************************************************************************************************** -->
-	 <div id="twrap">
-	 	<div class="container centered">
-	 		<div class="row">
-	 			<div class="col-lg-8 col-lg-offset-2">
-	 			<i class="fa fa-comment-o"></i>
-	 			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-	 			<h4><br/>Marcel Newman</h4>
-	 			<p>WEB DESIGNER - BLACKTIE.CO</p>
-	 			</div>
-	 		</div><! --/row -->
-	 	</div><! --/container -->
-	 </div><! --/twrap -->
-
-	<!-- *****************************************************************************************************************
-	 OUR CLIENTS
-	 ***************************************************************************************************************** -->
-	 <div id="cwrap">
-		 <div class="container">
-		 	<div class="row centered">
-			 	<h3>OUR CLIENTS</h3>
-			 	<div class="col-lg-3 col-md-3 col-sm-3">
-			 		<img src="<?php echo URL::to('img/clients/client01.png')?>" class="img-responsive">
-			 	</div>
-			 	<div class="col-lg-3 col-md-3 col-sm-3">
-			 		<img src="<?php echo URL::to('img/clients/client02.png')?>" class="img-responsive">
-			 	</div>
-			 	<div class="col-lg-3 col-md-3 col-sm-3">
-			 		<img src="<?php echo URL::to('img/clients/client03.png')?>" class="img-responsive">
-			 	</div>
-			 	<div class="col-lg-3 col-md-3 col-sm-3">
-			 		<img src="<?php echo URL::to('img/clients/client04.png')?>" class="img-responsive">
-			 	</div>
-		 	</div><! --/row -->
-		 </div><! --/container -->
-	 </div><! --/cwrap -->
 
 	<!-- *****************************************************************************************************************
 	 FOOTER
@@ -254,9 +203,9 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="<?php echo URL::to('js/bootstrap.min.js')?>"></script>
-	<script src="<?php echo URL::to('js/retina-1.1.0.js')?>"></script>
-	<script src="<?php echo URL::to('js/jquery.hoverdir.js')?>"></script>
-  <script src="<?php echo URL::to('js/jquery.hoverex.min.js')?>"></script>
+    <script src="<?php echo URL::to('js/retina-1.1.0.js')?>"></script>
+    <script src="<?php echo URL::to('js/jquery.hoverdir.js')?>"></script>
+    <script src="<?php echo URL::to('js/jquery.hoverex.min.js')?>"></script>
 	<script src="<?php echo URL::to('js/jquery.prettyPhoto.js')?>"></script>
   	<script src="<?php echo URL::to('js/jquery.isotope.min.js')?>"></script>
   	<script src="<?php echo URL::to('js/custom.js')?>"></script>
