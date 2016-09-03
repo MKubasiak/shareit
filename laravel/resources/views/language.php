@@ -52,7 +52,7 @@ NAVBAR
 	<!-- *****************************************************************************************************************
 	 BLOG CONTENT
 	 ***************************************************************************************************************** -->
-   <?php $query = "SELECT * FROM function
+   <?php $query = "SELECT DISTINCT * FROM function
                     LEFT OUTER JOIN function_code ON function.idfunction = function_code.idfunction
                     JOIN language ON function.idlanguage = language.idlanguage
                     LEFT OUTER JOIN customer ON function_code.idcustomer = customer.idcustomer
