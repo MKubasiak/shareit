@@ -127,7 +127,7 @@ $found = DB::table('function')
                       echo
                         '<div class="portfolio-item graphic-design">' .
                                 '<div class="he-wrap tpl6">'.
-                                '<img src="'. URL::to('img/logo/'.$function->logo) .'" alt="">'.
+                                '<img src="'. URL::to('img/logo/'.$function->logo) .'" alt="" >'.
                                   '<div class="he-view">'.
                                     '<div class="bg a0" data-animate="fadeIn">'.
                                         '<h3 class="a1" data-animate="fadeInDown">'.$function->title.'</h4></h3>'.
@@ -167,7 +167,7 @@ if(isset($function->code_rating))  echo '<h5> Note : '.$function->code_rating.'<
  				<div class="col-md-4">
           <i class="fa fa-trophy"></i>
           <h4>Un thème simple</h4>
- 					<p>Grâce à un template bootstrap gratuit tweaké à volonté par nos soins, Share it dispose d'une interface sobre, claire et intuitive</p>
+ 					<p>Grâce à un template bootstrap tweaké à volonté par nos soins, Share it dispose d'une interface sobre, claire et intuitive</p>
  				</div>
 	 		</div>
 	 	</div><! --/container -->
@@ -254,12 +254,12 @@ if(isset($function->code_rating))  echo '<h5> Note : '.$function->code_rating.'<
 	 <div id="footerwrap">
 	 	<div class="container">
 		 	<div class="row">
-		 		<div class="col-lg-4">
+		 		<div class="col-lg-6">
 		 			<h4>About</h4>
 		 			<div class="hline-w"></div>
-		 			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+		 			<p>Nous sommes Louis Zwawiak et Maxime Kubasiak, deux étudiants en informatique de l'est de la France. Nous sommes actuellement dans un cursus MIAGE. Share It est notre premier site en collaboration :)</p>
 		 		</div>
-		 		<div class="col-lg-4">
+		 		<div class="col-lg-6">
 		 			<h4>Social Links</h4>
 		 			<div class="hline-w"></div>
 		 			<p>
@@ -270,16 +270,6 @@ if(isset($function->code_rating))  echo '<h5> Note : '.$function->code_rating.'<
 		 				<a href="#"><i class="fa fa-tumblr"></i></a>
 		 			</p>
 		 		</div>
-		 		<div class="col-lg-4">
-		 			<h4>Our Bunker</h4>
-		 			<div class="hline-w"></div>
-		 			<p>
-		 				Some Ave, 987,<br/>
-		 				23890, New York,<br/>
-		 				United States.<br/>
-		 			</p>
-		 		</div>
-
 		 	</div><! --/row -->
 	 	</div><! --/container -->
 	 </div><! --/footerwrap -->
