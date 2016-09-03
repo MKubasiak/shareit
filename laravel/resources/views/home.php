@@ -25,7 +25,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="<?php echo URL::to('js/modernizr.js') ?>"></script>
+    <!-- <script src="<?php //echo URL::to('js/modernizr.js') ?>"></script> -->
   </head>
 
   <body>
@@ -40,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">SHARE IT</a>
+          <a class="navbar-brand" href="<?php echo URL::to('/') ?>">SHARE IT</a>
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
@@ -115,8 +115,6 @@
   <h3>DERNIERES FONCTIONS</h3>
   <div class="portfolio-centered">
     <div class="recentitems portfolio">
-
-
 <?php
 $found = DB::table('function')
                   ->leftJoin('function_code', 'function.idfunction','=','function_code.idfunction')
@@ -155,22 +153,19 @@ $found = DB::table('function')
 	 	<div class="container">
  			<div class="row centered">
  				<div class="col-md-4">
- 					<i class="fa fa-heart-o"></i>
- 					<h4>Handsomely Crafted</h4>
- 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
- 					<p><br/><a href="#" class="btn btn-theme">More Info</a></p>
- 				</div>
- 				<div class="col-md-4">
  					<i class="fa fa-flask"></i>
- 					<h4>Retina Ready</h4>
- 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
- 					<p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+ 					<h4>Brillante structure</h4>
+ 					<p>Nous avons choisi d'utiliser Laravel comme framework. Relativement simple d'utilisation, celui ci permet une architechture MVC aisée. Le tout couplé à une base de données PostgreSQL qui envoie de la patate</p>
+ 				</div>
+        <div class="col-md-4">
+ 					<i class="fa fa-heart-o"></i>
+ 					<h4>Créé avec amour</h4>
+ 					<p>Notre site a été développé avec tout l'amour de Zwawou et Kubazou</p>
  				</div>
  				<div class="col-md-4">
- 					<i class="fa fa-trophy"></i>
- 					<h4>Quality Theme</h4>
- 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
- 					<p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+ 					<h4>Un thème simple</h4>
+          <i class="fa fa-trophy"></i>
+ 					<p>Grâce à un template bootstrap gratuit tweaké à volonté par nos soins, Share it dispose d'une interface sobre, claire et intuitive</p>
  				</div>
 	 		</div>
 	 	</div><! --/container -->
@@ -290,17 +285,17 @@ $found = DB::table('function')
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="<?php echo URL::to('js/bootstrap.min.js')?>"></script>
-	   <script src="<?php echo URL::to('js/retina-1.1.0.js')?>"></script>
-	<script src="<?php echo URL::to('js/jquery.hoverdir.js')?>"></script>
-	<script src="<?php echo URL::to('js/jquery.hoverex.min.js')?>"></script>
-  <script src="<?php echo URL::to('js/jquery.prettyPhoto.js')?>"></script>
-  	<script src="<?php echo URL::to('js/jquery.isotope.min.js')?>"></script>
-  	<script src="<?php echo URL::to('js/custom.js')?>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="<?php echo URL::to('js/bootstrap.min.js')?>"></script>
+<script src="<?php echo URL::to('js/retina-1.1.0.js')?>"></script>
+<script src="<?php echo URL::to('js/jquery.hoverdir.js')?>"></script>
+<script src="<?php echo URL::to('js/jquery.hoverex.min.js')?>"></script>
+<script src="<?php echo URL::to('js/jquery.prettyPhoto.js')?>"></script>
+<script src="<?php echo URL::to('js/jquery.isotope.min.js')?>"></script>
+<script src="<?php echo URL::to('js/custom.js')?>"></script>
 
 
-    <script>
+<script>
 // Portfolio
 (function($) {
 	"use strict";
