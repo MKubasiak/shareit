@@ -120,17 +120,20 @@
 <?php
 $found = DB::table('function')
                   ->leftJoin('function_code', 'function.idfunction','=','function_code.idfunction')
+                  ->join('language', 'function.idlanguage','=','language.idlanguage')
+                  ->leftjoin('customer', 'function_code.idcustomer','=', 'customer.idcustomer')
                   ->orderBy('date_code')
                   ->chunk(10, function($retrieved){
                     foreach($retrieved as $function){
+                      //var_dump($function);
                       echo '<div class="portfolio-item graphic-design">' .
                                 '<div class="he-wrap tpl6">'.
-                                '<img src="'. URL::to('img/portfolio/portfolio_09.jpg') .'" alt="">'.
+                                '<img src="'. URL::to('img/logo/'.$function->logo) .'" alt="">'.
                                   '<div class="he-view">'.
                                     '<div class="bg a0" data-animate="fadeIn">'.
-                                        '<h3 class="a1" data-animate="fadeInDown">A Graphic Design Item</h3>'.
-                                              '<a data-rel="prettyPhoto" href="' . URL::to('img/portfolio/portfolio_09.jpg') .'" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>'.
-                                              '<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
+                                        '<h3 class="a1" data-animate="fadeInDown">'.$function->title.'</h3>'.
+                                        '<h4> By '. $function->nickname.'</h1>'.
+                                              '<a href="" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
                             '</div><!-- he bg -->'.
                           '</div><!-- he view -->'.
                         '</div><!-- he wrap -->'.
