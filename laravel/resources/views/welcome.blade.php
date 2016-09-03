@@ -73,15 +73,7 @@
             @endif
 
             <div class="content">
-                <?php
-                    $funccode = \app\CodeComment::all();
 
-                    foreach($funccode as $f){
-                        foreach($f->code() as $cc){
-                            echo $cc->code ,'<br>';
-                        }
-                    }
-                ?>
             </div>
         </div>
     </body>
