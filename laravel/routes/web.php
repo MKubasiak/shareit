@@ -16,6 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/', function () {
+Route::get('/language', function () {
   return view('language');
 });

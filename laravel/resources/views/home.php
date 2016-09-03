@@ -51,7 +51,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">LANGAGES <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <?php foreach($languages as $language):?>
-                  <li><a href=""><?php echo $language->nom ?></a></li>
+                  <li><a href="<?php echo URL::to('language') . '?lang='. $language->idlanguage ?>"><?php echo $language->nom ?></a></li>
                 <?php endforeach;?>
               </ul>
             </li>
