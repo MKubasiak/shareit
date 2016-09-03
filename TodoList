@@ -1,2 +1,18 @@
 TODO
   - Jeu de données complet
+
+
+
+  {
+    POUR LOULOU
+    ALTER TABLE "language" ADD COLUMN logo VARCHAR(50);
+
+    on y stocke seulement le nom du fichier, et non pas le path entier
+
+
+  }
+
+
+ NOTE :
+
+  - Taille images "Dernières Fonctions" : 600x450

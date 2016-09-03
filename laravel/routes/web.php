@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('home');
 });
+
+
+Route::get('/language', function () {
+  return view('language');
+});

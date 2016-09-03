@@ -30,6 +30,7 @@
 
   <body>
 
+<?php $languages = App\Language::all(); ?>
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -44,10 +45,20 @@
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">HOME</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
+            <li class="active"><a href="<?php echo URL::to('/') ?>">HOME</a></li>
+
             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">LANGAGES <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <?php foreach($languages as $language):?>
+                  <li><a href="<?php echo URL::to('language') . '?lang='. $language->idlanguage ?>"><?php echo $language->nom ?></a></li>
+                <?php endforeach;?>
+              </ul>
+            </li>
+
+            <!-- <li><a href="contact.html">CONTACT</a></li> -->
+
+            <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="blog.html">BLOG</a></li>
@@ -55,7 +66,8 @@
                 <li><a href="portfolio.html">PORTFOLIO</a></li>
                 <li><a href="single-project.html">SINGLE PROJECT</a></li>
               </ul>
-            </li>
+            </li> -->
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
