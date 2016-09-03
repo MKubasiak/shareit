@@ -5,7 +5,7 @@ return [
     'slogan' => 'Partagez vos idées',
     'description1' => 'Grâce à Share It, vous pouvez partager vos méthodes, vos fonctions dans tous les langages de programmation.',
     'description2' => ' Aidez la communauté, la communauté vous aidera :)',
-    'titrederfunc' => 'DERNIÈRES FONCTIONS',
+    'titrederfunc' => 'DERNIÈRES FONCTIONS/METHODES',
     'creerpar' => 'Par ',
     'note' => 'Note : ',
     'titrepara1' => 'Brillante structure',
