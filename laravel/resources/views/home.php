@@ -42,7 +42,7 @@
 	  <ol class="carousel-indicators">
 		  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-		  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		  <!-- <li data-target="#carousel-example-generic" data-slide-to="2"></li> -->
 	  </ol>
 
 	  <div class="carousel-inner" role="listbox">
@@ -50,11 +50,9 @@
 			  <img src="img/carousel/wall1.png" alt="First slide">
 			  <div class="container">
 				  <div class="carousel-caption">
-					  <h3><?php echo trans('hometrans.slogan') ?></h3>
 					  <h1>Share It</h1>
+              <h3><?php echo trans('hometrans.slogan') ?></h3>
 					  <br>
-					  <h5><?php echo trans('hometrans.description1') ?></h5>
-					  <h5><?php echo trans('hometrans.description2') ?></h5>
 				  </div>
 			  </div>
 		  </div>
@@ -62,11 +60,9 @@
 			  <img src="img/carousel/wall2.png" alt="Second slide">
 			  <div class="container">
 				  <div class="carousel-caption">
-					  <h3><?php echo trans('hometrans.slogan') ?></h3>
-					  <h1>Share It</h1>
 					  <br>
-					  <h5><?php echo trans('hometrans.description1') ?></h5>
-					  <h5><?php echo trans('hometrans.description2') ?></h5>
+            <h3><?php echo trans('hometrans.description2') ?></h3>
+					  <h4><?php echo trans('hometrans.description1') ?></h4>
 				  </div>
 			  </div>
 		  </div>
