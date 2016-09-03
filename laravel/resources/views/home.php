@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Page d'accueil du site web Share It">
+    <meta name="author" content="Maxime KUBASIAK & Louis ZWAWIAK">
     <link rel="shortcut icon" href="<?php echo URL::to('ico/favicon.ico')?>">
-    <title>Share it | Home</title>
+    <title>Share it | <?php echo trans('hometrans.pageaccueil') ?></title>
     <!-- Bootstrap core CSS -->
     <?php echo URL::to('css/bootstrap.css')?>
     <link href="<?php echo URL::to('css/bootstrap.css')?>" rel="stylesheet">
@@ -68,10 +68,10 @@
 	    <div class="container">
 			     <div class="row">
 				         <div class="col-lg-8 col-lg-offset-2">
-                    <h3>Partagez vos idées</h3>
+                    <h3><?php echo trans('hometrans.slogan') ?></h3>
                     <h1>Share It</h1>
-          					<h5>Grâce à Share It, vous pouvez partager vos méthodes, vos fonctions dans tous les langages de programmation</h5>
-          					<h5>Aidez la communauté, la communauté vous aidera :)</h5>
+          					<h5><?php echo trans('hometrans.description1') ?></h5>
+          					<h5><?php echo trans('hometrans.description2') ?></h5>
 				        </div>
 	      <div class="col-lg-8 col-lg-offset-2 himg">
 					<!-- <img src="<?php //echo URL::to('/img/code.jpg')?>" class="img-responsive">-->
@@ -112,7 +112,7 @@
    PORTFOLIO SECTION
    ***************************************************************************************************************** -->
 <div id="portfoliowrap">
-  <h3>DERNIERES FONCTIONS</h3>
+  <h3><?php echo trans('hometrans.titrederfunc') ?></h3>
   <div class="portfolio-centered">
     <div class="recentitems portfolio">
 <?php
@@ -131,8 +131,8 @@ $found = DB::table('function')
                                   '<div class="he-view">'.
                                     '<div class="bg a0" data-animate="fadeIn">'.
                                         '<h3 class="a1" data-animate="fadeInDown">'.$function->title.'</h4></h3>'.
-                                        '<h4> By '. $function->nickname.'</h1>';
-if(isset($function->code_rating))  echo '<h5> Note : '.$function->code_rating.'</h5>';
+                                        '<h4>'. trans('hometrans.creerpar') . $function->nickname.'</h1>';
+if(isset($function->code_rating))  echo '<h5>'. trans('hometrans.note') . $function->code_rating.'</h5>';
                                    echo '<a href="" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
                             '</div><!-- he bg -->'.
                           '</div><!-- he view -->'.
@@ -156,18 +156,18 @@ if(isset($function->code_rating))  echo '<h5> Note : '.$function->code_rating.'<
  			<div class="row centered">
  				<div class="col-md-4">
  					<i class="fa fa-flask"></i>
- 					<h4>Brillante structure</h4>
- 					<p>Nous avons choisi d'utiliser Laravel comme framework. Relativement simple d'utilisation, celui ci permet une architechture MVC aisée. Le tout couplé à une base de données PostgreSQL qui envoie de la patate</p>
+ 					<h4><?php echo trans('hometrans.titrepara1') ?></h4>
+ 					<p><?php echo trans('hometrans.contenupara1') ?></p>
  				</div>
         <div class="col-md-4">
  					<i class="fa fa-heart-o"></i>
- 					<h4>Créé avec amour</h4>
- 					<p>Notre site a été développé avec tout l'amour de Zwawou et Kubazou</p>
+ 					<h4><?php echo trans('hometrans.titrepara2') ?></h4>
+ 					<p><?php echo trans('hometrans.contenupara2') ?></p>
  				</div>
  				<div class="col-md-4">
-          <i class="fa fa-trophy"></i>
-          <h4>Un thème simple</h4>
- 					<p>Grâce à un template bootstrap tweaké à volonté par nos soins, Share it dispose d'une interface sobre, claire et intuitive</p>
+   			       <i class="fa fa-trophy"></i>
+       			   <h4><?php echo trans('hometrans.titrepara3') ?></h4>
+					<p><?php echo trans('hometrans.contenupara3') ?></p>
  				</div>
 	 		</div>
 	 	</div><! --/container -->
@@ -255,19 +255,19 @@ if(isset($function->code_rating))  echo '<h5> Note : '.$function->code_rating.'<
 	 	<div class="container">
 		 	<div class="row">
 		 		<div class="col-lg-6">
-		 			<h4>About</h4>
+		 			<h4><?php echo trans('hometrans.apropos') ?></h4>
 		 			<div class="hline-w"></div>
-		 			<p>Nous sommes Louis Zwawiak et Maxime Kubasiak, deux étudiants en informatique de l'est de la France. Nous sommes actuellement dans un cursus MIAGE. Share It est notre premier site en collaboration :)</p>
+		 			<p><?php echo trans('hometrans.contenuapropos') ?></p>
 		 		</div>
 		 		<div class="col-lg-6">
-		 			<h4>Social Links</h4>
+		 			<h4><?php echo trans('hometrans.reseaux') ?></h4>
 		 			<div class="hline-w"></div>
 		 			<p>
-		 				<a href="#"><i class="fa fa-dribbble"></i></a>
+		 				<!--<a href="#"><i class="fa fa-dribbble"></i></a>-->
 		 				<a href="#"><i class="fa fa-facebook"></i></a>
 		 				<a href="#"><i class="fa fa-twitter"></i></a>
-		 				<a href="#"><i class="fa fa-instagram"></i></a>
-		 				<a href="#"><i class="fa fa-tumblr"></i></a>
+		 				<!--<a href="#"><i class="fa fa-instagram"></i></a>
+		 				<a href="#"><i class="fa fa-tumblr"></i></a>-->
 		 			</p>
 		 		</div>
 		 	</div><! --/row -->
