@@ -124,14 +124,16 @@ $found = DB::table('function')
                   ->chunk(10, function($retrieved){
                     foreach($retrieved as $function){
                       //var_dump($function);
-                      echo '<div class="portfolio-item graphic-design">' .
+                      echo
+                        '<div class="portfolio-item graphic-design">' .
                                 '<div class="he-wrap tpl6">'.
                                 '<img src="'. URL::to('img/logo/'.$function->logo) .'" alt="">'.
                                   '<div class="he-view">'.
                                     '<div class="bg a0" data-animate="fadeIn">'.
-                                        '<h3 class="a1" data-animate="fadeInDown">'.$function->title.'</h3>'.
-                                        '<h4> By '. $function->nickname.'</h1>'.
-                                              '<a href="" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
+                                        '<h3 class="a1" data-animate="fadeInDown">'.$function->title.'</h4></h3>'.
+                                        '<h4> By '. $function->nickname.'</h1>';
+if(isset($function->code_rating))  echo '<h5> Note : '.$function->code_rating.'</h5>';
+                                   echo '<a href="" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
                             '</div><!-- he bg -->'.
                           '</div><!-- he view -->'.
                         '</div><!-- he wrap -->'.
