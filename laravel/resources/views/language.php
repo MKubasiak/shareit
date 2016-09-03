@@ -52,21 +52,12 @@ NAVBAR
 	<!-- *****************************************************************************************************************
 	 BLOG CONTENT
 	 ***************************************************************************************************************** -->
-   <?php $query = "SELECT DISTINCT * FROM function
+   <?php $query = "SELECT DISTINCT function.title, function.date_creation, customer.nickname, function.description FROM function
                     JOIN language ON function.idlanguage = language.idlanguage
+                    JOIN customer ON function.idcustomer = customer.idcustomer
                     WHERE language.nom = '$currentLang'";
       $functions = DB::select($query);
     ?>
-   <?php /*$functions = DB::table('function')
-                     ->leftJoin('function_code', 'function.idfunction','=','function_code.idfunction')
-                     ->join('language', 'function.idlanguage','=','language.idlanguage')
-                     ->leftjoin('customer', 'function_code.idcustomer','=', 'customer.idcustomer')
-                     ->where('language.nom',$currentLang)
-                     ->orderBy('date_code')
-                     ->select('function.*','function_code.*','language.*', 'language.*','customer.*')
-                     ->get();
-                     var_dump($functions);*/
-                     ?>
    <div class="container mtb">
 	 	<div class="row">
       <div class="col-lg-8">
@@ -79,9 +70,8 @@ NAVBAR
         foreach($functions as $function){
           echo
           '<a href=""><h3 class="ctitle">'.$function->title.'</h3></a>'.
-          '<p><csmall>'.'Posted: April 25, 2014'.'</csmall> | <csmall2>By:'. 'Admin - 3 Comments'.'</csmall2></p>'.
-          '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>'.
-          '<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>'.
+          '<p><csmall>Posté : '.$function->date_creation.'</csmall> | <csmall2>By:'. $function->nickname.'</csmall2></p>'.
+          '<p>'.$function->description.'</p>'.
           '<p><a href="single-post.html">[Read More]</a></p>'.
           '<div class="hline"></div>'.
 
@@ -99,17 +89,17 @@ NAVBAR
 		 			</p>
 
 		 		<div class="spacing"></div>
-
+        <?php $languages = App\Language::all(); ?>
 		 		<h4>Categories</h4>
 		 		<div class="hline"></div>
-			 		<p><a href="#"><i class="fa fa-angle-right"></i> Wordpress</a> <span class="badge badge-theme pull-right">9</span></p>
-			 		<p><a href="#"><i class="fa fa-angle-right"></i> Photoshop</a> <span class="badge badge-theme pull-right">3</span></p>
-			 		<p><a href="#"><i class="fa fa-angle-right"></i> Web Design</a> <span class="badge badge-theme pull-right">11</span></p>
-			 		<p><a href="#"><i class="fa fa-angle-right"></i> Development</a> <span class="badge badge-theme pull-right">5</span></p>
-			 		<p><a href="#"><i class="fa fa-angle-right"></i> Tips & Tricks</a> <span class="badge badge-theme pull-right">7</span></p>
-			 		<p><a href="#"><i class="fa fa-angle-right"></i> Code Snippets</a> <span class="badge badge-theme pull-right">12</span></p>
+          <?php
+            foreach($languages as $language){
+              echo
+              '<p><a href="'.URL::to('language') . '?lang='. $language->nom.'"><i class="fa fa-angle-right"></i>'.$language->nom.'</a></p>';
 
-		 		<div class="spacing"></div>
+            }
+          ?>
+			 	<div class="spacing"></div>
 
 		 		<h4>Recent Posts</h4>
 		 		<div class="hline"></div>
