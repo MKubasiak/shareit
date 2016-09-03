@@ -163,8 +163,8 @@ $found = DB::table('function')
  					<p>Notre site a été développé avec tout l'amour de Zwawou et Kubazou</p>
  				</div>
  				<div class="col-md-4">
- 					<h4>Un thème simple</h4>
           <i class="fa fa-trophy"></i>
+          <h4>Un thème simple</h4>
  					<p>Grâce à un template bootstrap gratuit tweaké à volonté par nos soins, Share it dispose d'une interface sobre, claire et intuitive</p>
  				</div>
 	 		</div>
