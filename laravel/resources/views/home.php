@@ -91,30 +91,30 @@
   <div class="portfolio-centered">
     <div class="recentitems portfolio">
 <?php
-$found = DB::table('function')
-                  ->leftJoin('function_code', 'function.idfunction','=','function_code.idfunction')
-                  ->join('language', 'function.idlanguage','=','language.idlanguage')
-                  ->leftjoin('customer', 'function_code.idcustomer','=', 'customer.idcustomer')
-                  ->orderBy('date_code')
-                  ->chunk(10, function($retrieved){
-                    foreach($retrieved as $function){
-                      //var_dump($function);
-                      echo
-                        '<div class="portfolio-item graphic-design">' .
-                                '<div class="he-wrap tpl6">'.
-                                '<img src="'. URL::to('img/logo/'.$function->logo) .'" alt="" >'.
-                                  '<div class="he-view">'.
-                                    '<div class="bg a0" data-animate="fadeIn">'.
-                                        '<h3 class="a1" data-animate="fadeInDown">'.$function->title.'</h4></h3>'.
-                                        '<h4>'. trans('hometrans.creerpar') . $function->nickname.'</h1>';
-if(isset($function->code_rating))  echo '<h5>'. trans('hometrans.note') . $function->code_rating.'</h5>';
-                                   echo '<a href="" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
-                            '</div><!-- he bg -->'.
-                          '</div><!-- he view -->'.
-                        '</div><!-- he wrap -->'.
-                      '</div><!-- end col-12 -->';
-                    }
-                  });
+$query = 'SELECT logo, title, nickname
+FROM "function"
+inner join "language" on "function".idlanguage = "language".idlanguage
+inner JOIN customer on function.idcustomer = customer.idcustomer
+order by function.idfunction LIMIT 10';
+$functions = DB::select($query);
+foreach($functions as $function){
+  //var_dump($function);
+  echo
+    '<div class="portfolio-item graphic-design">' .
+            '<div class="he-wrap tpl6">'.
+            '<img src="'. URL::to('img/logo/'.$function->logo) .'" alt="" >'.
+              '<div class="he-view">'.
+                '<div class="bg a0" data-animate="fadeIn">'.
+                    '<h3 class="a1" data-animate="fadeInDown">'.$function->title.'</h3>'.
+                    '<h4>'. trans('hometrans.creerpar') . $function->nickname.'</h1>';
+               echo '<a href="" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
+        '</div><!-- he bg -->'.
+      '</div><!-- he view -->'.
+    '</div><!-- he wrap -->'.
+  '</div><!-- end col-12 -->';
+}
+
+
 ?>
     </div><!-- portfolio -->
   </div><!-- portfolio container -->
