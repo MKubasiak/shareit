@@ -101,30 +101,30 @@ NAVBAR
           ?>
 			 	<div class="spacing"></div>
 
-		 		<h4>Recent Posts</h4>
+
+<?php   $query = 'SELECT logo, title, nickname, "function".date_creation
+        FROM "function"
+        inner join "language" on "function".idlanguage = "language".idlanguage
+        inner JOIN customer on function.idcustomer = customer.idcustomer
+        order by function.idfunction LIMIT 4';
+        $functions = DB::select($query); ?>
+
+        <h4>Ajouts récents</h4>
 		 		<div class="hline"></div>
 					<ul class="popular-posts">
-		                <li>
-		                    <a href="#"><img src="<?php echo URL::to('img/thumb01.jpg')?>" alt="Popular Post"></a>
-		                    <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-		                    <em>Posted on 02/21/14</em>
-		                </li>
-		                <li>
-		                    <a href="#"><img src="<?php echo URL::to('img/thumb02.jpg')?>" alt="Popular Post"></a>
-		                    <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-		                    <em>Posted on 03/01/14</em>
-		                <li>
-		                    <a href="#"><img src="<?php echo URL::to('img/thumb03.jpg')?>" alt="Popular Post"></a>
-		                    <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-		                    <em>Posted on 05/16/14</em>
-		                </li>
-		                <li>
-		                    <a href="#"><img src="<?php echo URL::to('img/thumb04.jpg')?>" alt="Popular Post"></a>
-		                    <p><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit</a></p>
-		                    <em>Posted on 05/16/14</em>
-		                </li>
-		            </ul>
+            <?php
+              foreach($functions as $function){
+                echo
+                '<li>'.
+                    '<a href="#"><img src="'.URL::to('img/logo/'.$function->logo).'" alt="Popular Post"></a>'.
+                    '<p><a href="#">'.$function->title.'</a></p>'.
+                    '<em>Ajouté le :'.$function->date_creation.'</em>'.
+                '</li>';
+              }
 
+
+            ?>
+           </ul>
 		 		<div class="spacing"></div>
 
 <!--		 		<h4>Popular Tags</h4>
