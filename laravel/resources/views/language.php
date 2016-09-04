@@ -31,8 +31,6 @@
   </head>
 
   <body>
-
-    <?php $languages = App\Language::all(); ?>
     <?php $currentLang =  Request::input('lang');?>
 <!-- *****************************************************************************************************************
 NAVBAR
@@ -90,11 +88,10 @@ NAVBAR
 		 			</p>
 
 		 		<div class="spacing"></div>
-        <?php $languages = App\Language::all(); ?>
 		 		<h4>Categories</h4>
 		 		<div class="hline"></div>
           <?php
-            foreach($languages as $language){
+            foreach(App\Language::all() as $language){
               echo
               '<p><a href="'.URL::to('language') . '?lang='. $language->nom.'"><i class="fa fa-angle-right"></i>'.$language->nom.'</a></p>';
 

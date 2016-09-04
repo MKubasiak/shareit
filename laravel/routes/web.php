@@ -24,3 +24,7 @@ Route::get('/language', function () {
 Route::get('/function', function () {
   return view('function');
 });
+
+Route::get('/search', function() {
+    return view('search');
+});

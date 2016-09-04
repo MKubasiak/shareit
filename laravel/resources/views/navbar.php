@@ -13,7 +13,7 @@
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="<?php echo URL::to('/') ?>"><?php echo trans('hometrans.pageaccueil') ?></a></li>
-
+                <li><?php include 'searchbar.php' ?></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo trans('hometrans.langages') ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
