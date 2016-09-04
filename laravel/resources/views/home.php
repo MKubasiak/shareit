@@ -87,7 +87,7 @@
   <div class="portfolio-centered">
     <div class="recentitems portfolio">
 <?php
-$query = 'SELECT logo, title, nickname
+$query = 'SELECT idfunction, logo, title, nickname
 FROM "function"
 inner join "language" on "function".idlanguage = "language".idlanguage
 inner JOIN customer on function.idcustomer = customer.idcustomer
@@ -103,7 +103,7 @@ foreach($functions as $function){
                 '<div class="bg a0" data-animate="fadeIn">'.
                     '<h3 class="a1" data-animate="fadeInDown">'.$function->title.'</h3>'.
                     '<h4>'. trans('hometrans.creerpar') . $function->nickname.'</h1>';
-               echo '<a href="" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
+               echo '<a href="'.URL::to('/function').'?post='.$function->idfunction.'" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
         '</div><!-- he bg -->'.
       '</div><!-- he view -->'.
     '</div><!-- he wrap -->'.

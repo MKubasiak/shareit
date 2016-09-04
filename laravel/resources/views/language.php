@@ -52,7 +52,7 @@ NAVBAR
 	<!-- *****************************************************************************************************************
 	 BLOG CONTENT
 	 ***************************************************************************************************************** -->
-   <?php $query = "SELECT DISTINCT function.title, function.date_creation, customer.nickname, function.description FROM function
+   <?php $query = "SELECT DISTINCT function.idfunction, function.title, function.date_creation, customer.nickname, function.description FROM function
                     JOIN language ON function.idlanguage = language.idlanguage
                     JOIN customer ON function.idcustomer = customer.idcustomer
                     WHERE language.nom = '$currentLang'";
@@ -69,10 +69,9 @@ NAVBAR
       }else{
         foreach($functions as $function){
           echo
-          '<a href=""><h3 class="ctitle">'.$function->title.'</h3></a>'.
+          '<a href="'.URL::to('/function').'?post='.$function->idfunction.'"><h3 class="ctitle">'.$function->title.'</h3></a>'.
           '<p><csmall>Posté : '.$function->date_creation.'</csmall> | <csmall2>By:'. $function->nickname.'</csmall2></p>'.
           '<p>'.$function->description.'</p>'.
-          '<p><a href="single-post.html">[Read More]</a></p>'.
           '<div class="hline"></div>'.
 
           '<div class="spacing"></div>';
@@ -102,7 +101,7 @@ NAVBAR
 			 	<div class="spacing"></div>
 
 
-<?php   $query = 'SELECT logo, title, nickname, "function".date_creation
+<?php   $query = 'SELECT idfunction, logo, title, nickname, "function".date_creation
         FROM "function"
         inner join "language" on "function".idlanguage = "language".idlanguage
         inner JOIN customer on function.idcustomer = customer.idcustomer
@@ -116,8 +115,8 @@ NAVBAR
               foreach($functions as $function){
                 echo
                 '<li>'.
-                    '<a href="#"><img src="'.URL::to('img/logo/'.$function->logo).'" alt="Popular Post"></a>'.
-                    '<p><a href="#">'.$function->title.'</a></p>'.
+                    '<a href="'.URL::to('/function').'?post='.$function->idfunction.'"><img src="'.URL::to('img/logo/'.$function->logo).'" alt="Popular Post"></a>'.
+                    '<p><a href="'.URL::to('/function').'?post='.$function->idfunction.'">'.$function->title.'</a></p>'.
                     '<em>Ajouté le :'.$function->date_creation.'</em>'.
                 '</li>';
               }

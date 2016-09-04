@@ -19,3 +19,8 @@ Route::get('/', function () {
 Route::get('/language', function () {
   return view('language');
 });
+
+
+Route::get('/function', function () {
+  return view('function');
+});
