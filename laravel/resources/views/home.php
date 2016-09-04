@@ -84,15 +84,18 @@
    ***************************************************************************************************************** -->
 <div id="portfoliowrap">
   <h3><?php echo trans('hometrans.titrederfunc') ?></h3>
-  <div class="portfolio-centered">
-    <div class="recentitems portfolio">
+		<div class="portfolio-centered">
+		<div class="recentitems portfolio">
 <?php
-$query = 'SELECT idfunction, logo, title, nickname
-FROM "function"
-inner join "language" on "function".idlanguage = "language".idlanguage
-inner JOIN customer on function.idcustomer = customer.idcustomer
-order by function.idfunction LIMIT 10';
-$functions = DB::select($query);
+
+$functions = DB::table('function')->select('idfunction','logo','title','nickname')->
+								join('language','function.idlanguage','=','language.idlanguage')->
+	                   			join('customer','function.idcustomer','=','customer.idcustomer')->
+					   			orderby('function.idfunction')->
+								take(10)->
+								get();
+
+
 foreach($functions as $function){
   //var_dump($function);
   echo

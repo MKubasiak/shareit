@@ -52,18 +52,20 @@ NAVBAR
 	<!-- *****************************************************************************************************************
 	 BLOG CONTENT
 	 ***************************************************************************************************************** -->
-   <?php $query = "SELECT DISTINCT function.idfunction, function.title, function.date_creation, customer.nickname, function.description FROM function
-                    JOIN language ON function.idlanguage = language.idlanguage
-                    JOIN customer ON function.idcustomer = customer.idcustomer
-                    WHERE language.nom = '$currentLang'";
-      $functions = DB::select($query);
-    ?>
+
    <div class="container mtb">
 	 	<div class="row">
       <div class="col-lg-8">
 	 		<! -- BLOG POSTS LIST -->
 
       <?php
+
+      $functions = DB::table('function')->select('function.idfunction', 'function.title', 'function.date_creation', 'customer.nickname', 'function.description')->
+                                          join('language','function.idlanguage','=','language.idlanguage')->
+                                          join('customer','function.idcustomer','=','customer.idcustomer')->
+                                          where('language.nom',$currentLang)->
+                                          get();
+
       if(empty($functions)){
         echo 'Désolé, il n\'y a pas encore de fonctions correspondant a ce langage :(';
       }else{
@@ -101,26 +103,25 @@ NAVBAR
 			 	<div class="spacing"></div>
 
 
-<?php   $query = 'SELECT idfunction, logo, title, nickname, "function".date_creation
-        FROM "function"
-        inner join "language" on "function".idlanguage = "language".idlanguage
-        inner JOIN customer on function.idcustomer = customer.idcustomer
-        order by function.idfunction LIMIT 4';
-        $functions = DB::select($query); ?>
-
         <h4>Ajouts récents</h4>
 		 		<div class="hline"></div>
 					<ul class="popular-posts">
             <?php
-              foreach($functions as $function){
+            $functions = DB::table('function')->select('idfunction','logo','title','nickname','function.date_creation')->
+                                                join('language','function.idlanguage','=','language.idlanguage')->
+                                                join('customer','function.idcustomer','=','customer.idcustomer')->
+                                                orderby('function.idfunction')->
+                                                take(4)->
+                                                get();
+
+            foreach($functions as $function){
                 echo
                 '<li>'.
                     '<a href="'.URL::to('/function').'?post='.$function->idfunction.'"><img src="'.URL::to('img/logo/'.$function->logo).'" alt="Popular Post"></a>'.
                     '<p><a href="'.URL::to('/function').'?post='.$function->idfunction.'">'.$function->title.'</a></p>'.
                     '<em>Ajouté le :'.$function->date_creation.'</em>'.
                 '</li>';
-              }
-
+            }
 
             ?>
            </ul>

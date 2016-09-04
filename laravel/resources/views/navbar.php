@@ -1,4 +1,3 @@
-<?php $languages = App\Language::all(); ?>
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -18,7 +17,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo trans('hometrans.langages') ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <?php foreach($languages as $language):?>
+                        <?php foreach(App\Language::all() as $language):?>
                             <li><a href="<?php echo URL::to('language') . '?lang='. $language->nom ?>"><?php echo $language->nom ?></a></li>
                         <?php endforeach;?>
                     </ul>
