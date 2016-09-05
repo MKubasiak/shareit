@@ -17,13 +17,7 @@
   <div class="hline"></div>
     <ul class="popular-posts">
       <?php
-      $functions = DB::table('function')->select('idfunction','logo','title','nickname','function.date_creation')->
-                                          join('language','function.idlanguage','=','language.idlanguage')->
-                                          join('customer','function.idcustomer','=','customer.idcustomer')->
-                                          orderby('function.idfunction')->
-                                          take(4)->
-                                          get();
-
+      $functions = App\FunctionBase::getFunctions(4);
       foreach($functions as $function){
         echo
           '<div class="portfolio-item graphic-design">' .

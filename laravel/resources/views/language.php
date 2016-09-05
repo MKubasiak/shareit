@@ -58,11 +58,7 @@ NAVBAR
 
       <?php
 
-      $functions = DB::table('function')->select('function.idfunction', 'function.title', 'function.date_creation', 'customer.nickname', 'function.description')->
-                                          join('language','function.idlanguage','=','language.idlanguage')->
-                                          join('customer','function.idcustomer','=','customer.idcustomer')->
-                                          where('language.nom',$currentLang)->
-                                          get();
+      $functions = App\FunctionBase::getFunctionsByLanguage($currentLang);
 
       if(empty($functions)){
         echo 'Désolé, il n\'y a pas encore de fonctions correspondant a ce langage :(';
@@ -80,25 +76,6 @@ NAVBAR
     </div>
 	 	<!-- SIDEBAR -->
     <?php include 'sidebar.php' ?>
-<!--		 		<h4>Popular Tags</h4>
-		 		<div class="hline"></div>
-		 			<p>
-		            	<a class="btn btn-theme" href="#" role="button">Design</a>
-		            	<a class="btn btn-theme" href="#" role="button">Wordpress</a>
-		            	<a class="btn btn-theme" href="#" role="button">Flat</a>
-		            	<a class="btn btn-theme" href="#" role="button">Modern</a>
-		            	<a class="btn btn-theme" href="#" role="button">Wallpaper</a>
-		            	<a class="btn btn-theme" href="#" role="button">HTML5</a>
-		            	<a class="btn btn-theme" href="#" role="button">Pre-processor</a>
-		            	<a class="btn btn-theme" href="#" role="button">Developer</a>
-		            	<a class="btn btn-theme" href="#" role="button">Windows</a>
-		            	<a class="btn btn-theme" href="#" role="button">Phothosop</a>
-		            	<a class="btn btn-theme" href="#" role="button">UX</a>
-		            	<a class="btn btn-theme" href="#" role="button">Interface</a>
-		            	<a class="btn btn-theme" href="#" role="button">UI</a>
-		            	<a class="btn btn-theme" href="#" role="button">Blog</a>
-		 			</p>
-	 		</div><!-->
 	 	</div><! --/row -->
 	 </div><! --/container -->
 

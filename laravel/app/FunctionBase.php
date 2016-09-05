@@ -17,4 +17,22 @@ class FunctionBase extends Model
     protected $primaryKey = 'idfunction';
     public $timestamps = false;
 
+    static public function getFunctions($limit){
+
+    return FunctionBase::select('*')->
+                    join('language','function.idlanguage','=','language.idlanguage')->
+                              join('customer','function.idcustomer','=','customer.idcustomer')->
+                      orderby('function.idfunction')->
+                    take($limit)->
+                    get();
+  }
+
+  static public function getFunctionsByLanguage($language){
+     return FunctionBase::select('function.idfunction', 'function.title', 'function.date_creation', 'customer.nickname', 'function.description')->
+                                        join('language','function.idlanguage','=','language.idlanguage')->
+                                        join('customer','function.idcustomer','=','customer.idcustomer')->
+                                        where('language.nom',$language)->
+                                        get();
+  }
+
 }

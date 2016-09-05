@@ -88,14 +88,7 @@
 		<div class="recentitems portfolio">
 <?php
 
-$functions = DB::table('function')->select('idfunction','logo','title','nickname')->
-								join('language','function.idlanguage','=','language.idlanguage')->
-	                   			join('customer','function.idcustomer','=','customer.idcustomer')->
-					   			orderby('function.idfunction')->
-								take(10)->
-								get();
-
-
+$functions = App\FunctionBase::getFunctions(10);
 foreach($functions as $function){
   //var_dump($function);
   echo
