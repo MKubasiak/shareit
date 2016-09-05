@@ -106,112 +106,12 @@ NAVBAR
             } ?>
         </div>
         <! -- SIDEBAR -->
-        <div class="col-lg-4">
-            <h4>Search</h4>
-            <div class="hline"></div>
-            <p>
-                <br/>
-                <input type="text" class="form-control" placeholder="Search something">
-            </p>
-
-            <div class="spacing"></div>
-            <h4>Categories</h4>
-            <div class="hline"></div>
-            <?php
-            foreach(App\Language::all() as $language){
-                echo
-                    '<p><a href="'.URL::to('language') . '?lang='. $language->nom.'"><i class="fa fa-angle-right"></i>'.$language->nom.'</a></p>';
-
-            }
-            ?>
-            <div class="spacing"></div>
-
-
-            <h4>Ajouts récents</h4>
-            <div class="hline"></div>
-            <ul class="popular-posts">
-                <?php
-                $functions = DB::table('function')->select('idfunction','logo','title','nickname','function.date_creation')->
-                join('language','function.idlanguage','=','language.idlanguage')->
-                join('customer','function.idcustomer','=','customer.idcustomer')->
-                orderby('function.idfunction')->
-                take(4)->
-                get();
-
-                foreach($functions as $function){
-                    echo
-                        '<li>'.
-                        '<a href="'.URL::to('/function').'?post='.$function->idfunction.'"><img src="'.URL::to('img/logo/'.$function->logo).'" alt="Popular Post"></a>'.
-                        '<p><a href="'.URL::to('/function').'?post='.$function->idfunction.'">'.$function->title.'</a></p>'.
-                        '<em>Ajouté le :'.$function->date_creation.'</em>'.
-                        '</li>';
-                }
-
-                ?>
-            </ul>
-            <div class="spacing"></div>
-
-            <!--		 		<h4>Popular Tags</h4>
-                             <div class="hline"></div>
-                                 <p>
-                                    <a class="btn btn-theme" href="#" role="button">Design</a>
-                                    <a class="btn btn-theme" href="#" role="button">Wordpress</a>
-                                    <a class="btn btn-theme" href="#" role="button">Flat</a>
-                                    <a class="btn btn-theme" href="#" role="button">Modern</a>
-                                    <a class="btn btn-theme" href="#" role="button">Wallpaper</a>
-                                    <a class="btn btn-theme" href="#" role="button">HTML5</a>
-                                    <a class="btn btn-theme" href="#" role="button">Pre-processor</a>
-                                    <a class="btn btn-theme" href="#" role="button">Developer</a>
-                                    <a class="btn btn-theme" href="#" role="button">Windows</a>
-                                    <a class="btn btn-theme" href="#" role="button">Phothosop</a>
-                                    <a class="btn btn-theme" href="#" role="button">UX</a>
-                                    <a class="btn btn-theme" href="#" role="button">Interface</a>
-                                    <a class="btn btn-theme" href="#" role="button">UI</a>
-                                    <a class="btn btn-theme" href="#" role="button">Blog</a>
-                                 </p>
-                         </div><!-->
-        </div><! --/row -->
+        <?php include 'sidebar.php' ?>
     </div><! --/container -->
 
 
-    <!-- *****************************************************************************************************************
-     FOOTER
-     ***************************************************************************************************************** -->
-    <div id="footerwrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h4><?php echo trans('hometrans.apropos') ?></h4>
-                    <div class="hline-w"></div>
-                    <p><?php echo trans('hometrans.contenuapropos') ?></p>
-                </div>
-                <div class="col-lg-6">
-                    <h4><?php echo trans('hometrans.reseaux') ?></h4>
-                    <div class="hline-w"></div>
-                    <p>
-                        <!--<a href="#"><i class="fa fa-dribbble"></i></a>-->
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <!--<a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-tumblr"></i></a>-->
-                    </p>
-                </div>
-            </div><! --/row -->
-        </div><! --/container -->
-    </div><! --/footerwrap -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="<?php echo URL::to('js/bootstrap.min.js')?>"></script>
-    <script src="<?php echo URL::to('js/retina-1.1.0.js')?>"></script>
-    <script src="<?php echo URL::to('js/jquery.hoverdir.js')?>"></script>
-    <script src="<?php echo URL::to('js/jquery.hoverex.min.js')?>"></script>
-    <script src="<?php echo URL::to('js/jquery.prettyPhoto.js')?>"></script>
-    <script src="<?php echo URL::to('js/jquery.isotope.min.js')?>"></script>
-    <script src="<?php echo URL::to('js/custom.js')?>"></script>
-
+       <?php include 'footer.php' ?>
+       <?php include 'scripts.php' ?>
 
 </body>
 </html>

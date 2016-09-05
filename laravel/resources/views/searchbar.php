@@ -11,7 +11,7 @@
             }
             ?>
             <li class="divider"></li>
-            <li><a href="">Tous</a></li>
+            <li><a onclick="changer('Tous')">Tous</a></li>
         </ul>
     </div>
     <input type="hidden" name="search_param" value="all" id="search_param">
