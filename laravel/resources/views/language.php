@@ -80,14 +80,7 @@ NAVBAR
     </div>
 	 		<! -- SIDEBAR -->
 	 		<div class="col-lg-4">
-		 		<h4>Search</h4>
-		 		<div class="hline"></div>
-		 			<p>
-		 				<br/>
-		 				<input type="text" class="form-control" placeholder="Search something">
-		 			</p>
 
-		 		<div class="spacing"></div>
 		 		<h4>Categories</h4>
 		 		<div class="hline"></div>
           <?php
@@ -112,13 +105,19 @@ NAVBAR
                                                 get();
 
             foreach($functions as $function){
-                echo
-                '<li>'.
-                    '<a href="'.URL::to('/function').'?post='.$function->idfunction.'"><img src="'.URL::to('img/logo/'.$function->logo).'" alt="Popular Post"></a>'.
-                    '<p><a href="'.URL::to('/function').'?post='.$function->idfunction.'">'.$function->title.'</a></p>'.
-                    '<em>Ajouté le :'.$function->date_creation.'</em>'.
-                '</li>';
-            }
+              echo
+                '<div class="portfolio-item graphic-design">' .
+                        '<div class="he-wrap tpl6">'.
+                        '<img src="'. URL::to('img/logo/'.$function->logo) .'" alt="" >'.
+                          '<div class="he-view">'.
+                            '<div class="bg a0" data-animate="fadeIn">'.
+                                '<h3 class="a1" data-animate="fadeInDown">'.$function->title.'</h3>'.
+                                '<h4>'. trans('hometrans.creerpar') . $function->nickname.'</h1>';
+                           echo '<a href="'.URL::to('/function').'?post='.$function->idfunction.'" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>'.
+                    '</div><!-- he bg -->'.
+                  '</div><!-- he view -->'.
+                '</div><!-- he wrap -->'.
+              '</div><!-- end col-12 -->';            }
 
             ?>
            </ul>
@@ -146,45 +145,8 @@ NAVBAR
 	 	</div><! --/row -->
 	 </div><! --/container -->
 
-
-	<!-- *****************************************************************************************************************
-	 FOOTER
-	 ***************************************************************************************************************** -->
-   <div id="footerwrap">
-	 	<div class="container">
-		 	<div class="row">
-		 		<div class="col-lg-6">
-		 			<h4><?php echo trans('hometrans.apropos') ?></h4>
-		 			<div class="hline-w"></div>
-		 			<p><?php echo trans('hometrans.contenuapropos') ?></p>
-		 		</div>
-		 		<div class="col-lg-6">
-		 			<h4><?php echo trans('hometrans.reseaux') ?></h4>
-		 			<div class="hline-w"></div>
-		 			<p>
-		 				<!--<a href="#"><i class="fa fa-dribbble"></i></a>-->
-		 				<a href="#"><i class="fa fa-facebook"></i></a>
-		 				<a href="#"><i class="fa fa-twitter"></i></a>
-		 				<!--<a href="#"><i class="fa fa-instagram"></i></a>
-		 				<a href="#"><i class="fa fa-tumblr"></i></a>-->
-		 			</p>
-		 		</div>
-		 	</div><! --/row -->
-	 	</div><! --/container -->
-	 </div><! --/footerwrap -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="<?php echo URL::to('js/bootstrap.min.js')?>"></script>
-    <script src="<?php echo URL::to('js/retina-1.1.0.js')?>"></script>
-    <script src="<?php echo URL::to('js/jquery.hoverdir.js')?>"></script>
-    <script src="<?php echo URL::to('js/jquery.hoverex.min.js')?>"></script>
-	<script src="<?php echo URL::to('js/jquery.prettyPhoto.js')?>"></script>
-  	<script src="<?php echo URL::to('js/jquery.isotope.min.js')?>"></script>
-  	<script src="<?php echo URL::to('js/custom.js')?>"></script>
-
+   <?php include 'footer.php' ?>
+   <?php include 'scripts.php' ?>
 
   </body>
 </html>
