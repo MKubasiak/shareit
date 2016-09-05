@@ -9,11 +9,14 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo URL::to('/') ?>">SHARE IT</a>
-        </div>
+            <div class="col-md-6 col-md-offset-1">
+              <?php include 'searchbar.php' ?>
+            </div>
+
+
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="<?php echo URL::to('/') ?>"><?php echo trans('hometrans.pageaccueil') ?></a></li>
-                <li><?php include 'searchbar.php' ?></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo trans('hometrans.langages') ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -37,5 +40,6 @@
 
             </ul>
         </div><!--/.nav-collapse -->
+        </div>
     </div>
 </div>
