@@ -6,7 +6,7 @@
     <?php
       foreach(App\Language::all() as $language){
         echo
-        '<p><a href="'.URL::to('language') . '?lang='. $language->nom.'"><i class="fa fa-angle-right"></i>'.$language->nom.'</a></p>';
+        '<p><a href="'.URL::to('search') . '?lang='. $language->nom.'&words="><i class="fa fa-angle-right"></i>'.$language->nom.'</a></p>';
 
       }
     ?>

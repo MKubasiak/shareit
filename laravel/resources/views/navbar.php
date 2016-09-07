@@ -21,7 +21,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo trans('hometrans.langages') ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <?php foreach(App\Language::all() as $language):?>
-                            <li><a href="<?php echo URL::to('language') . '?lang='. $language->nom ?>"><?php echo $language->nom ?></a></li>
+                            <li><a href="<?php echo URL::to('search') . '?lang='. $language->nom . '&words=' ?>"><?php echo $language->nom ?></a></li>
                         <?php endforeach;?>
                     </ul>
                 </li>
