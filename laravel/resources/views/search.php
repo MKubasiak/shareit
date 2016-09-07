@@ -108,8 +108,7 @@ NAVBAR
         <! -- SIDEBAR -->
         <?php include 'sidebar.php' ?>
     </div><! --/container -->
-
-
+</div>
        <?php include 'footer.php' ?>
        <?php include 'scripts.php' ?>
 
