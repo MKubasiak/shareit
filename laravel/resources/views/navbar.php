@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<?php echo URL::to('/') ?>">SHARE IT</a>
-            <div class="col-md-6 col-md-offset-1">
+            <div class="col-md-5 col-md-offset-1">
               <?php include 'searchbar.php' ?>
             </div>
 
@@ -25,6 +25,7 @@
                         <?php endforeach;?>
                     </ul>
                 </li>
+                <li onclick="afficherFenetreConnexion()"><a>CONNEXION</a></li>
 
                 <!-- <li><a href="contact.html">CONTACT</a></li> -->
 
@@ -41,5 +42,14 @@
             </ul>
         </div><!--/.nav-collapse -->
         </div>
+        <div id="panelConnexion">Coucouille</div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+
+    function afficherFenetreConnexion(){
+        $("#panelConnexion").slideToggle("fast");
+    }
+</script>
